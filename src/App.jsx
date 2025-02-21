@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { ID, databases } from "./lib/appwrite.js";
 const App = () => {
+  let copy = useRef();
   const [originalURL, setOriginalURL] = useState("");
   const [shortID, setShortID] = useState("");
   const [urlSaved, setUrlSaved] = useState(false);
-
+  const [copied, setCopied] = useState(false);
   const generateShortID = () => {
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -30,6 +31,12 @@ const App = () => {
 
     setUrlSaved(true);
   };
+
+  const handleCopy = () => {
+    copy.current.select();
+    navigator.clipboard.writeText(copy.current.value);
+  };
+
   return (
     <div>
       <header className="h-20 p-5 flex items-center justify-center md:block md:h-16 ">
@@ -76,12 +83,20 @@ const App = () => {
                 type="text"
                 readOnly
                 value={`http://localhost:5173/${shortID}`}
+                ref={copy}
               />
               <button
                 className="h-12 p-2 rounded-md outline-none border-2 border-yellow-300 cursor-pointer text-xl font-semibold hover:bg-amber-100 transition-all ease-in hover:shadow-sm hover:shadow-orange-950  "
                 title="Copy"
+                onClick={() => {
+                  handleCopy();
+                  setCopied(true);
+                  setTimeout(() => {
+                    setCopied(false);
+                  }, 3000);
+                }}
               >
-                Copy
+                {copied ? "Copied!" : "Copy"}
               </button>
             </div>
           </div>
