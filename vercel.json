@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/:shortID", "destination": "/index.html" }
+  ]
+}
