@@ -1,12 +1,9 @@
 import { useState } from "react";
 import { ID, databases } from "./lib/appwrite.js";
 const App = () => {
-  console.log("Redddddddd");
-
   const [originalURL, setOriginalURL] = useState("");
   const [shortID, setShortID] = useState("");
   const [urlSaved, setUrlSaved] = useState(false);
-  const [clicked, setClicked] = useState(false);
 
   const generateShortID = () => {
     const characters =
@@ -30,7 +27,7 @@ const App = () => {
         shortURL: shortID,
       }
     );
-    console.log(response);
+
     setUrlSaved(true);
   };
   return (
@@ -63,8 +60,7 @@ const App = () => {
           <button
             className="h-12 p-2 rounded-md outline-none border-2 border-yellow-300 cursor-pointer shadow-md shadow-pink-600 text-lg font-semibold"
             type="submit"
-            title="shorten"
-            onClick={() => setClicked(!clicked)}
+            title="Shorten"
           >
             Shorten
           </button>
@@ -72,20 +68,20 @@ const App = () => {
         {/* for shortned url */}
         {urlSaved ? (
           <div className="flex flex-col gap-2">
-            <h3>Your Shortned URL</h3>
+            <h3 className="text-xl font-medium">Your Shortned URL</h3>
             <div className="flex gap-2">
               <input
-                title="Your Short URL"
-                className="h-12 p-2 rounded-md outline-none  text-lg border-2 border-yellow-300  font-semibold w-80"
+                title="Short URL"
+                className="h-12 p-2 rounded-md outline-none  text-lg border-2 border-yellow-300  font-semibold w-80 hover:bg-amber-100 transition-all ease-in hover:shadow-sm hover:shadow-orange-950 "
                 type="text"
                 readOnly
                 value={`http://localhost:5173/${shortID}`}
               />
               <button
-                className="h-12 p-2 rounded-md outline-none border-2 border-yellow-300 cursor-pointer text-lg font-semibold"
+                className="h-12 p-2 rounded-md outline-none border-2 border-yellow-300 cursor-pointer text-xl font-semibold hover:bg-amber-100 transition-all ease-in hover:shadow-sm hover:shadow-orange-950  "
                 title="Copy"
               >
-                copy
+                Copy
               </button>
             </div>
           </div>
