@@ -82,7 +82,7 @@ const App = () => {
                 className="h-12 p-2 rounded-md outline-none  text-lg border-2 border-yellow-300  font-semibold w-80 hover:bg-amber-100 transition-all ease-in hover:shadow-sm hover:shadow-orange-950 "
                 type="text"
                 readOnly
-                value={`https://www.narendramahara.me/${shortID}`}
+                value={`https://narendramahara.me/${shortID}`}
                 ref={copy}
               />
               <button
