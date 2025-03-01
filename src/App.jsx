@@ -51,12 +51,12 @@ const App = () => {
             e.preventDefault();
             generateShortID();
           }}
-          className="h-36 flex items-center justify-center gap-3 p-2"
+          className="h-36 flex items-center justify-center gap-3 p-2 md:w-full"
         >
           <input
             title="Enter Your URL"
             type="url"
-            className="h-12 p-2 rounded-md outline-none  text-lg border-2 border-yellow-300 shadow-md shadow-blue-600 font-semibold"
+            className="h-12 p-2 rounded-md outline-none  text-lg border-2 border-yellow-300 shadow-md shadow-blue-600 font-semibold md:w-1/2"
             placeholder="Enter Your URL"
             value={originalURL}
             onChange={(e) => {
@@ -74,15 +74,15 @@ const App = () => {
         </form>
         {/* for shortned url */}
         {urlSaved ? (
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 w-full md:items-center p-2">
             <h3 className="text-xl font-medium">Your Shortned URL</h3>
-            <div className="flex gap-2">
+            <div className="flex gap-2 w-full justify-center ">
               <input
                 title="Short URL"
-                className="h-12 p-2 rounded-md outline-none  text-lg border-2 border-yellow-300  font-semibold w-80 hover:bg-amber-100 transition-all ease-in hover:shadow-sm hover:shadow-orange-950 "
+                className="h-12 p-2 rounded-md outline-none text-lg border-2 border-yellow-300  font-semibold w-80 hover:bg-amber-100 transition-all ease-in hover:shadow-sm hover:shadow-orange-950 "
                 type="text"
                 readOnly
-                value={`https://narendramahara.me/${shortID}`}
+                value={`narendramahara.me/${shortID}`}
                 ref={copy}
               />
               <button
